@@ -33,8 +33,6 @@ def pregunta_01():
 print(pregunta_01())        
 
 
-
-
 def pregunta_02():
     """
     Retorne la cantidad de registros por cada letra de la primera columna como la lista
@@ -50,8 +48,14 @@ def pregunta_02():
     ]
 
     """
-    return
-
+    conteo = {} #diccionario para almacenar el conteo de cada letra
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            letra = linea.strip().split()[0] #Obtener la primera letra de cada línea
+            conteo[letra] = conteo.get(letra,0)+1 #Incrementar el conteo de la letra
+    lista_tuplas = sorted(conteo.items()) #Convertir el diccionario en una lista de tuplas y ordenarlo
+    return lista_tuplas
+print(pregunta_02())
 
 def pregunta_03():
     """
