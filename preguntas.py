@@ -21,7 +21,18 @@ def pregunta_01():
     214
 
     """
-    return
+    suma = 0         #inicializa la variable suma
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split('\t') #Utiliza tabulador como separador del archivo csv
+            try:
+                suma = suma + int(valores[1])
+            except (ValueError, IndexError):
+                pass
+    return suma
+print(pregunta_01())        
+
+
 
 
 def pregunta_02():
