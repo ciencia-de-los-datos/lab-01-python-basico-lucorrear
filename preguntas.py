@@ -72,16 +72,16 @@ def pregunta_03():
     ]
     
     """
-    suma_por_letra = {}
-    with open('data.csv', 'r') as f:
-        for linea in f:
-            valores = linea.strip().split()
-            letra = valores[0]
-            numero = int(valores[1])
-            suma_por_letra[letra] = suma_por_letra.get(letra, 0) + numero
-    resultado = sorted(suma_por_letra.items())
+    suma_por_letra = {} # Diccionario para almacenar la suma de la columna 2 para cada letra de la columna 1
+    with open('data.csv', 'r') as f: # Abre el archivo data.csv en modo lectura
+        for linea in f: # Itera sobre cada línea del archivo
+            valores = linea.strip().split() # Divide en valores
+            letra = valores[0] # Obtiene la letra de la primera columna
+            numero = int(valores[1]) # Obtiene el número de la segunda columna
+            suma_por_letra[letra] = suma_por_letra.get(letra, 0) + numero # Incrementa la suma de la letra
+    resultado = sorted(suma_por_letra.items()) # Convierte el diccionario en una lista de tuplas y las ordena
     return resultado
-print(pregunta_03())
+print(pregunta_03()) # Llama a la función e imprime el resultado
 
 
 
@@ -107,7 +107,19 @@ def pregunta_04():
     ]
 
     """
-    return
+    conteo_por_mes = {} # Diccionario para almacenar el conteo de registros de cada uno de los meses
+    with open('data.csv', 'r') as f: # Abre el archivo data.csv en modo lectura
+        for linea in f: # Itera sobre cada una de las líneas del archivo
+            valores = linea.strip().split() # Divide la línea en valores
+            fecha = valores[2] # Obtiene la fecha de la 3ra ccolumna
+            mes = fecha.split('-')[1] # Extrae el mes de la fecha (parte de la cadena despues del segundo guion)
+            if mes in conteo_por_mes: # Verifica si el mes ya está en el diccionario
+                conteo_por_mes[mes] += 1 #si está en el diccionario, incrementa el conteo
+            else:
+                conteo_por_mes[mes] = 1 # Si no está en el diccionario, crea una nueva entrada con conteo 1
+    resultado = sorted(conteo_por_mes.items()) # Convierte el diccionario en una lista de tuplas y la ordena
+    return resultado
+print(pregunta_04()) # Llama a la función e imprime el resultado
 
 
 def pregunta_05():
