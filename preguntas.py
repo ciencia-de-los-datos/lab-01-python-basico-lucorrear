@@ -178,8 +178,28 @@ def pregunta_06():
     ]
 
     """
-    return
+    valores_por_clave = {}
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split()
+            diccionario = valores[4]
+            elementos = diccionario.split(',')
+            for elemento in elementos:
+                clave, valor = elemento.split(':')
+                valor = int(valor)
+                if clave in valores_por_clave:
+                    valores_por_clave[clave].append(valor)
+                else:
+                    valores_por_clave[clave] = [valor]                 
+    resultado = []
+    for clave, valores in valores_por_clave.items():
+        min_valor = min(valores)
+        max_valor = max(valores)
+        resultado.append((clave, min_valor, max_valor))
 
+    resultado = sorted(resultado)
+    return resultado
+print (pregunta_06())
 
 def pregunta_07():
     """
