@@ -70,9 +70,19 @@ def pregunta_03():
         ("D", 31),
         ("E", 67),
     ]
-
+    
     """
-    return
+    suma_por_letra = {}
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split()
+            letra = valores[0]
+            numero = int(valores[1])
+            suma_por_letra[letra] = suma_por_letra.get(letra, 0) + numero
+    resultado = sorted(suma_por_letra.items())
+    return resultado
+print(pregunta_03())
+
 
 
 def pregunta_04():
