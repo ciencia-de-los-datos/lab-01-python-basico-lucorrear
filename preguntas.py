@@ -137,7 +137,23 @@ def pregunta_05():
     ]
 
     """
-    return
+    valores_por_letra = {}
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split()
+            letra = valores[0]
+            numero = int(valores[1])
+            if letra in valores_por_letra:
+                valores_por_letra[letra] = (
+                    max(valores_por_letra[letra][0], numero),
+                    min(valores_por_letra[letra][1], numero)
+                )
+            else:
+                valores_por_letra[letra] = (numero, numero)
+    resultado = sorted([(letra, max_min[0], max_min[1]) for letra, max_min in valores_por_letra.items()])
+    return resultado
+print(pregunta_05())
+
 
 
 def pregunta_06():
