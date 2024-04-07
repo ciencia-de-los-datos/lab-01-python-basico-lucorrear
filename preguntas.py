@@ -28,7 +28,7 @@ def pregunta_01():
             try:
                 suma = suma + int(valores[1])
             except (ValueError, IndexError):
-                pass
+                pass 
     return suma
 print(pregunta_01())        
 
