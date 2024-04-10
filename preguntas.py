@@ -270,6 +270,7 @@ def pregunta_08():
             else:
                 letras_por_valor[valor_columna2]=[letra_columna1]
     resultado = [(valor, sorted(set(letras))) for valor, letras in letras_por_valor.items()]
+    resultado = sorted(resultado)
     return resultado
 print(pregunta_08())
 
