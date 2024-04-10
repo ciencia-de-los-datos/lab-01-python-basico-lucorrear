@@ -295,7 +295,18 @@ def pregunta_09():
     }
 
     """
-    return
+    registros_por_clave={}
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores=linea.strip().split()
+            diccionario = valores[4]
+            pares_clave_valor = diccionario.split(',')
+            for par in pares_clave_valor:
+                clave, valor = par.split(':')
+                registros_por_clave[clave]=registros_por_clave.get(clave,0) + 1
+    registros_por_clave = dict(sorted(registros_por_clave.items()))
+    return registros_por_clave
+print(pregunta_09())
 
 
 def pregunta_10():
