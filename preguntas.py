@@ -259,7 +259,19 @@ def pregunta_08():
     ]
 
     """
-    return
+    letras_por_valor={}
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split()
+            valor_columna2 = int(valores[1])
+            letra_columna1 = valores[0]
+            if valor_columna2 in letras_por_valor:
+                letras_por_valor[valor_columna2].append(letra_columna1)
+            else:
+                letras_por_valor[valor_columna2]=[letra_columna1]
+    resultado = [(valor, sorted(set(letras))) for valor, letras in letras_por_valor.items()]
+    return resultado
+print(pregunta_08())
 
 
 def pregunta_09():
