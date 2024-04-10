@@ -222,7 +222,19 @@ def pregunta_07():
     ]
 
     """
-    return
+    letras_por_valor={}
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split()
+            valor_columna2 = int(valores[1])
+            valor_columna1 = valores[0]
+            if valor_columna2 in letras_por_valor:
+                letras_por_valor[valor_columna2].append(valor_columna1)
+            else:
+                letras_por_valor[valor_columna2] =[valor_columna1]
+    resultado = sorted(letras_por_valor.items())
+    return resultado
+print(pregunta_07())
 
 
 def pregunta_08():
