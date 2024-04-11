@@ -391,4 +391,29 @@ def pregunta_12():
     }
 
     """
-    return
+    # Inicializamos un diccionario para almacenar la suma de los valores de la columna 5 para cada letra de la columna 1
+    suma_por_letra = {}
+
+    # Abrimos el archivo CSV
+    with open('data.csv', 'r') as f:
+        # Iteramos sobre cada línea del archivo
+        for linea in f:
+            # Separamos los valores de la línea
+            valores = linea.strip().split()
+            # Obtenemos la letra de la columna 1
+            letra_columna_1 = valores[0]
+            # Obtenemos los valores de la columna 5
+            valores_columna_5 = valores[4].split(',')
+            # Iteramos sobre cada valor de la columna 5
+            for valor in valores_columna_5:
+                # Dividimos el valor para obtener la clave y el valor asociado
+                clave, valor = valor.split(':')
+                # Sumamos el valor al diccionario correspondiente a la letra de la columna 1
+                suma_por_letra[letra_columna_1] = suma_por_letra.get(letra_columna_1, 0) + int(valor)
+
+    # Ordenamos el diccionario resultante por las claves (letras de la columna 1)
+    suma_por_letra_ordenada = dict(sorted(suma_por_letra.items()))
+
+    return suma_por_letra_ordenada
+
+print(pregunta_12())
