@@ -327,7 +327,18 @@ def pregunta_10():
 
 
     """
-    return
+    resultados = []
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split('\t')
+            letra_columna_1 = valores[0]
+            elementos_columna_4 = len(valores[3].split(','))
+            elementos_columna_5 = len(valores[4].split(','))
+            resultados.append((letra_columna_1, elementos_columna_4, elementos_columna_5))
+    return resultados
+
+print(pregunta_10())
+
 
 
 def pregunta_11():
