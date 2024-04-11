@@ -359,7 +359,21 @@ def pregunta_11():
 
 
     """
-    return
+    suma_letras = {}
+    with open('data.csv', 'r') as f:
+        for linea in f:
+            valores = linea.strip().split()
+            letras_columna_4 = valores[3].split(',')
+            cantidad = int(valores[1])
+            for letra in letras_columna_4:
+                suma_letras[letra] = suma_letras.get(letra, 0) + cantidad
+    
+    # Ordenar el diccionario alfabéticamente por las claves
+    suma_letras_ordenadas = dict(sorted(suma_letras.items()))
+    return suma_letras_ordenadas
+
+print(pregunta_11())
+
 
 
 def pregunta_12():
